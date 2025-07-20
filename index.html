@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room: A Segunda Guerra Mundial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=MedievalSharp&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-medieval {
+            font-family: 'MedievalSharp', cursive;
+        }
+        .fade-in {
+            animation: fadeInAnimation 0.5s ease-in forwards;
+        }
+        @keyframes fadeInAnimation {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .results-table th, .results-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #4a5568;
+            vertical-align: middle;
+        }
+        .results-table th {
+            background-color: #2d3748;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .results-table tr:nth-child(even) {
+            background-color: #232c3b;
+        }
+        .admin-input {
+            background-color: #1a202c;
+            border: 1px solid #4a5568;
+            color: white;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            width: 100%;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+        .text-justify {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <!-- Seção 1: Texto de Estudo -->
+        <header class="text-center mb-12">
+            <h1 class="font-medieval text-4xl md:text-5xl text-amber-300 mb-4">O Mundo em Chamas</h1>
+            <p class="text-xl text-gray-400">Navegando pela Segunda Guerra Mundial</p>
+        </header>
+
+        <article id="texto-estudo" class="prose prose-invert lg:prose-xl max-w-none bg-gray-800 p-6 rounded-lg shadow-lg mb-12 text-justify">
+            <h2 class="text-center mb-8">Material de Estudo: Decifrando o Conflito</h2>
+            <p class="mb-6">Para escapar dos escombros da história, você precisa compreender as forças que levaram o mundo ao seu conflito mais devastador. As respostas para sua fuga estão nas linhas e entrelinhas a seguir.</p>
+            
+            <h3 class="mb-4">1. As Raízes da Guerra: Tratado de Versalhes e a Ascensão do Nazi-Fascismo</h3>
+            <p class="mb-6">As sementes da Segunda Guerra foram plantadas ao final da Primeira. O <strong>Tratado de Versalhes</strong> (1919) impôs condições humilhantes à Alemanha, gerando um profundo sentimento de revanchismo. A crise econômica de 1929 agravou a situação, criando um terreno fértil para ideologias extremistas. Na Itália, Benito Mussolini e o Fascismo tomaram o poder. Na Alemanha, Adolf Hitler e o <strong>Partido Nazista</strong> ascenderam prometendo restaurar a glória nacional. O Nazismo se baseava em um nacionalismo extremo, no racismo (especialmente o antissemitismo), no expansionismo (a busca pelo "espaço vital" ou <strong>Lebensraum</strong>) e em um Estado totalitário.</p>
+
+            <h3 class="mb-4">2. A Política de Apaziguamento e a Formação dos Eixos</h3>
+            <p class="mb-6">Diante da agressividade da Alemanha Nazista, que rearmou o país e anexou a Áustria, as potências europeias como França e Inglaterra adotaram a <strong>Política de Apaziguamento</strong>. Elas cederam às exigências de Hitler na esperança de evitar uma nova guerra, culminando no Acordo de Munique (1938), que permitiu a anexação de parte da Tchecoslováquia. Enquanto isso, as alianças se formavam. De um lado, o <strong>Eixo</strong>, composto por Alemanha, Itália e Japão, com interesses expansionistas. Do outro, os <strong>Aliados</strong>, liderados inicialmente por França e Reino Unido, e mais tarde reforçados pela União Soviética e pelos Estados Unidos.</p>
+
+            <h3 class="mb-4">3. O Estopim e a "Blitzkrieg"</h3>
+            <p class="mb-6">O estopim da guerra ocorreu em 1º de setembro de 1939, quando a Alemanha invadiu a Polônia. Em resposta, Reino Unido e França declararam guerra à Alemanha. Os alemães utilizaram uma tática de guerra inovadora e avassaladora, a <strong>Blitzkrieg</strong> ("guerra-relâmpago"), que combinava ataques rápidos de tanques (divisões Panzer) e infantaria com um forte apoio aéreo da Luftwaffe (força aérea), conquistando grande parte da Europa em poucos meses.</p>
+
+            <h3 class="mb-4">4. A Virada da Guerra: Stalingrado e o Dia D</h3>
+            <p class="mb-6">Até 1942, o Eixo parecia imbatível. A virada começou na Frente Oriental. Após invadir a União Soviética em 1941, o exército alemão sofreu uma derrota catastrófica na <strong>Batalha de Stalingrado</strong> (1942-1943), que marcou o início do avanço soviético em direção a Berlim. Na Frente Ocidental, o ponto de virada foi o <strong>Dia D</strong> (6 de junho de 1944), o desembarque dos Aliados na Normandia (França), que abriu uma nova frente de batalha e acelerou a libertação da Europa Ocidental.</p>
+            
+            <h3 class="mb-4">5. O Holocausto: A Barbárie Institucionalizada</h3>
+            <p class="mb-6">Paralelamente à guerra, o regime nazista executou um dos maiores crimes da história da humanidade: o <strong>Holocausto</strong>. Foi o extermínio sistemático de cerca de seis milhões de judeus, além de outras minorias como ciganos, homossexuais e opositores políticos. Essa política de genocídio foi implementada através de guetos, campos de concentração e campos de extermínio, como Auschwitz, onde a morte em massa era industrializada em câmaras de gás. O Holocausto representa a consequência extrema da ideologia racista e totalitária do Nazismo.</p>
+
+            <h3 class="mb-4">6. O Fim da Guerra e Suas Consequências</h3>
+            <p class="mb-6">A guerra na Europa terminou em maio de 1945 com a rendição da Alemanha, pouco após o suicídio de Hitler. No Pacífico, o conflito se estendeu até agosto de 1945, quando os Estados Unidos lançaram bombas atômicas sobre as cidades de <strong>Hiroshima e Nagasaki</strong>, forçando a rendição do Japão. As consequências da guerra foram profundas: um saldo de mais de 50 milhões de mortos, a Europa destruída, a criação da ONU (Organização das Nações Unidas) para evitar novos conflitos, e o início da <strong>Guerra Fria</strong>, com o mundo dividido em dois blocos liderados por EUA (capitalista) e URSS (socialista).</p>
+        </article>
+
+        <!-- Seção 2: Vocabulário -->
+        <section id="vocabulario" class="bg-gray-800 p-6 rounded-lg shadow-lg mb-12">
+            <h2 class="font-medieval text-3xl text-amber-300 mb-6 text-center">Vocabulário Essencial</h2>
+            <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                <div class="p-2"><dt class="font-bold text-amber-200">Tratado de Versalhes:</dt><dd>Acordo de paz que encerrou a Primeira Guerra, impondo duras penas à Alemanha.</dd></div>
+                <div class="p-2"><dt class="font-bold text-amber-200">Nazi-Fascismo:</dt><dd>Ideologias totalitárias, nacionalistas e expansionistas que surgiram na Itália e na Alemanha.</dd></div>
+                <div class="p-2"><dt class="font-bold text-amber-200">Lebensraum:</dt><dd>Termo alemão para "espaço vital", a política nazista de expandir seu território.</dd></div>
+                <div class="p-2"><dt class="font-bold text-amber-200">Política de Apaziguamento:</dt><dd>Política de ceder às exigências de Hitler para evitar a guerra, adotada por Reino Unido e França.</dd></div>
+                <div class="p-2"><dt class="font-bold text-amber-200">Eixo e Aliados:</dt><dd>As duas principais alianças militares da guerra. Eixo (Alemanha, Itália, Japão) e Aliados (Reino Unido, URSS, EUA, etc.).</dd></div>
+                <div class="p-2"><dt class="font-bold text-amber-200">Blitzkrieg:</dt><dd>"Guerra-relâmpago", tática militar alemã de ataques rápidos e combinados.</dd></div>
+                <div class="p-2"><dt class="font-bold text-amber-200">Batalha de Stalingrado:</dt><dd>Grande derrota alemã na União Soviética, considerada um ponto de virada crucial na guerra.</dd></div>
+                <div class="p-2"><dt class="font-bold text-amber-200">Dia D:</dt><dd>Desembarque dos Aliados na Normandia, que abriu a principal frente ocidental contra os nazistas.</dd></div>
+                <div class="p-2"><dt class="font-bold text-amber-200">Holocausto:</dt><dd>O genocídio sistemático de cerca de seis milhões de judeus e outras minorias pelo regime nazista.</dd></div>
+                <div class="p-2"><dt class="font-bold text-amber-200">Guerra Fria:</dt><dd>Período de disputa geopolítica e ideológica entre os Estados Unidos e a União Soviética após a Segunda Guerra.</dd></div>
+            </dl>
+        </section>
+
+        <!-- Seção 3: Escape Room Interativo -->
+        <div id="escape-room" class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-2xl border-2 border-amber-400 min-h-[300px]">
+        </div>
+
+        <!-- Seção 4: Tabela de Resultados -->
+        <div id="resultados" class="mt-12 bg-gray-800 p-6 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-medieval text-3xl text-amber-300">Resultados da Turma</h2>
+                <div id="admin-controls" class="hidden">
+                    <button id="add-manual-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg text-sm mr-2">Adicionar</button>
+                    <button id="logout-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg text-sm">Sair</button>
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full results-table">
+                    <thead><tr><th>Aluno(a)</th><th>Pontuação</th><th>Data</th><th id="admin-header" class="hidden">Ações</th></tr></thead>
+                    <tbody id="results-body">
+                        <tr><td colspan="3" class="text-center text-gray-500 py-4">Carregando resultados...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-6">
+                <button id="show-login-btn" class="text-amber-300 hover:text-amber-400 text-sm">Login do Professor</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="login-modal" class="modal-overlay hidden">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-2xl w-full max-w-sm">
+            <h3 class="font-medieval text-2xl text-amber-300 mb-4 text-center">Acesso Restrito</h3>
+            <div class="space-y-4">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-300">Usuário</label>
+                    <input type="text" id="username" class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-amber-500 focus:border-amber-500">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-300">Senha</label>
+                    <input type="password" id="password" class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-amber-500 focus:border-amber-500">
+                </div>
+                <p id="login-error" class="text-red-400 text-sm h-4"></p>
+                <div class="flex gap-4">
+                    <button id="login-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-2 px-4 rounded-lg">Entrar</button>
+                    <button id="cancel-login-btn" class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURAÇÃO E DADOS ---
+        const apiKey = '$2a$10$6CtPJpqy4GU0j0jRdhjTJ.llBmCKg9UcINOVmbrOqUE740xZgleei';
+        const binId = '687cf7e6d039d559a168a72f';
+        const PONTOS_POR_ACERTO = 0.2;
+        const gameData = {
+            'start': {
+                title: "Escape dos Escombros!",
+                text: "Você está em meio ao maior conflito da história da humanidade. Para encontrar o caminho de volta, você precisa entender as causas, os eventos e as terríveis consequências da Segunda Guerra Mundial. Use o texto de estudo para se guiar.",
+                needsInput: true,
+                options: [ { text: "Iniciar a missão!", next: 'q1' } ]
+            },
+            'q1': { question: "Qual tratado, imposto após a Primeira Guerra, é considerado uma das principais causas do revanchismo alemão?", options: [ { text: "O Acordo de Munique.", next: 'fail_generic', reason: 'O Acordo de Munique foi parte da Política de Apaziguamento, uma tentativa de evitar a guerra, não a causa do revanchismo.' }, { text: "O Tratado de Versalhes.", next: 'q2', points: PONTOS_POR_ACERTO }, { text: "O Pacto de Aço.", next: 'fail_generic', reason: 'O Pacto de Aço foi uma aliança militar entre Alemanha e Itália, já no contexto pré-guerra.' } ] },
+            'q2': { question: "A ideologia nazista defendia a expansão territorial para obter o que eles chamavam de:", options: [ { text: "Lebensraum (espaço vital).", next: 'q3', points: PONTOS_POR_ACERTO }, { text: "Blitzkrieg (guerra-relâmpago).", next: 'fail_generic', reason: 'Blitzkrieg era a tática militar, não o objetivo da expansão territorial.' }, { text: "Anschluss (anexação).", next: 'fail_generic', reason: 'Anschluss foi o nome dado à anexação da Áustria, uma aplicação da política de Lebensraum.' } ] },
+            'q3': { question: "Qual foi a política adotada por França e Reino Unido ao permitir as anexações de Hitler, na esperança de evitar a guerra?", options: [ { text: "Política de Isolamento.", next: 'fail_generic', reason: 'Essa política foi mais característica dos EUA no início do conflito.' }, { text: "Política de Apaziguamento.", next: 'q4', points: PONTOS_POR_ACERTO }, { text: "Política da Boa Vizinhança.", next: 'fail_generic', reason: 'Essa foi uma política dos EUA para a América Latina, sem relação com a crise europeia.' } ] },
+            'q4': { question: "Quais países formavam a aliança militar conhecida como Eixo?", options: [ { text: "Alemanha, União Soviética e Japão.", next: 'fail_generic', reason: 'A União Soviética lutou contra a Alemanha e se tornou um dos principais Aliados.' }, { text: "Alemanha, Itália e Japão.", next: 'q5', points: PONTOS_POR_ACERTO }, { text: "Reino Unido, França e EUA.", next: 'fail_generic', reason: 'Esses eram os principais membros dos Aliados, a aliança que lutou contra o Eixo.' } ] },
+            'q5': { question: "Qual evento marcou o início oficial da Segunda Guerra Mundial em 1º de setembro de 1939?", options: [ { text: "O ataque japonês a Pearl Harbor.", next: 'fail_generic', reason: 'O ataque a Pearl Harbor marcou a entrada dos EUA na guerra, em 1941, mas não o seu início.' }, { text: "A invasão da Polônia pela Alemanha.", next: 'q6', points: PONTOS_POR_ACERTO }, { text: "O desembarque na Normandia (Dia D).", next: 'fail_generic', reason: 'O Dia D foi uma operação crucial dos Aliados em 1944, já com a guerra em andamento.' } ] },
+            'q6': { question: "A tática alemã de 'guerra-relâmpago', que combinava ataques de tanques e aviação, era chamada de:", options: [ { text: "Luftwaffe.", next: 'fail_generic', reason: 'Luftwaffe era o nome da Força Aérea Alemã, um componente da Blitzkrieg.' }, { text: "Kamikaze.", next: 'fail_generic', reason: 'Kamikaze era uma tática de ataques suicidas usada pelos pilotos japoneses.' }, { text: "Blitzkrieg.", next: 'q7', points: PONTOS_POR_ACERTO } ] },
+            'q7': { question: "Qual batalha na Frente Oriental é considerada a grande virada da guerra, onde o avanço nazista foi detido?", options: [ { text: "A Batalha da Inglaterra.", next: 'fail_generic', reason: 'A Batalha da Inglaterra foi uma importante vitória aérea britânica, mas a grande virada terrestre ocorreu na URSS.' }, { text: "A Batalha de Stalingrado.", next: 'q8', points: PONTOS_POR_ACERTO }, { text: "A Batalha de Midway.", next: 'fail_generic', reason: 'A Batalha de Midway foi uma virada crucial na guerra do Pacífico, entre EUA e Japão.' } ] },
+            'q8': { question: "O que foi o Holocausto?", options: [ { text: "O extermínio sistemático de judeus e outras minorias pelo regime nazista.", next: 'q9', points: PONTOS_POR_ACERTO }, { text: "O nome dado aos bombardeios aéreos sobre cidades alemãs.", next: 'fail_generic', reason: 'Os bombardeios foram parte da estratégia militar, mas o Holocausto foi um projeto de genocídio.' }, { text: "A perseguição política a comunistas na Alemanha.", next: 'fail_generic', reason: 'A perseguição a comunistas foi parte da repressão nazista, mas o Holocausto foi um genocídio em escala industrial, focado principalmente nos judeus.' } ] },
+            'q9': { question: "Qual evento na Frente Ocidental, em 1944, foi decisivo para a libertação da França e o avanço aliado em direção à Alemanha?", options: [ { text: "A invasão da Itália.", next: 'fail_generic', reason: 'A invasão da Itália abriu uma frente importante, mas o desembarque na França foi a operação decisiva no Ocidente.' }, { text: "O cerco a Leningrado.", next: 'fail_generic', reason: 'O cerco a Leningrado foi um evento trágico e importante na Frente Oriental.' }, { text: "O Dia D (Desembarque na Normandia).", next: 'q10', points: PONTOS_POR_ACERTO } ] },
+            'q10': { question: "Qual foi a principal consequência geopolítica imediata do fim da Segunda Guerra Mundial?", options: [ { text: "O fortalecimento da Liga das Nações.", next: 'fail_generic', reason: 'A Liga das Nações foi considerada um fracasso e foi substituída pela ONU.' }, { text: "O início da Guerra Fria entre EUA e URSS.", next: 'victory', points: PONTOS_POR_ACERTO }, { text: "A unificação da Alemanha como uma potência democrática.", next: 'fail_generic', reason: 'Pelo contrário, a Alemanha foi dividida entre os vencedores, tornando-se um palco central da Guerra Fria.' } ] },
+            'fail_generic': { title: "Caminho Minado!", isFailure: true },
+            'victory': { title: "Missão Cumprida!", isVictory: true, options: [ { text: "Jogar Novamente", next: 'start' } ] }
+        };
+
+        let currentStepId = 'start';
+        let previousStepId = 'start';
+        let score = 0;
+        let studentName = '';
+        let isAdminLoggedIn = false;
+        let allResults = [];
+
+        const gameContainer = document.getElementById('escape-room');
+        const resultsBody = document.getElementById('results-body');
+        const loginModal = document.getElementById('login-modal');
+
+        function renderStep() {
+            const stepData = gameData[currentStepId];
+            gameContainer.innerHTML = '';
+            const contentWrapper = document.createElement('div');
+            contentWrapper.className = 'fade-in';
+            let htmlContent = `<h2 class="font-medieval text-3xl text-amber-300 mb-4 text-center">${stepData.title}</h2>`;
+            if (stepData.isVictory) {
+                const finalScore = score.toFixed(1);
+                htmlContent += `<p class="text-lg mb-6 text-center">Você decifrou os códigos e encontrou o caminho para a paz!.<br><br><strong class='text-2xl text-amber-300'>Sua pontuação final: ${finalScore} / 2.0</strong></p>`;
+                saveScore(studentName, finalScore);
+            } else if (stepData.isFailure) {
+                const failedOption = gameData[previousStepId].options.find(opt => opt.next === 'fail_generic');
+                const reason = failedOption ? failedOption.reason : "Tente pensar de outra forma.";
+                htmlContent += `<p class="text-lg mb-6 text-center text-red-400">${reason}</p>`;
+            } else {
+                htmlContent += `<p class="text-lg mb-6 text-center">${stepData.question || stepData.text}</p>`;
+            }
+            if (stepData.needsInput) {
+                htmlContent += `<input type="text" id="student-name" placeholder="Digite seu nome completo aqui" class="w-full md:w-3/4 bg-gray-700 border border-gray-600 rounded-lg py-2 px-3 mb-4 text-white focus:outline-none focus:ring-2 focus:ring-amber-400 block mx-auto">`;
+            }
+            let optionsHtml = '<div class="flex flex-col items-center space-y-4">';
+            if (stepData.isFailure) {
+                optionsHtml += `<button data-next="${previousStepId}" class="w-full md:w-3/4 bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">Tentar novamente</button>`;
+            } else {
+                stepData.options.forEach(option => {
+                    optionsHtml += `<button data-next="${option.next}" data-points="${option.points || 0}" class="w-full md:w-3/4 bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">${option.text}</button>`;
+                });
+            }
+            optionsHtml += '</div>';
+            contentWrapper.innerHTML = htmlContent + optionsHtml;
+            gameContainer.appendChild(contentWrapper);
+        }
+
+        async function updateJSONBin(data) {
+            try {
+                const response = await fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': apiKey
+                    },
+                    body: JSON.stringify(data)
+                });
+                if (!response.ok) throw new Error('Falha ao atualizar o Bin.');
+                return true;
+            } catch (error) {
+                console.error("Erro ao salvar no JSONBin:", error);
+                alert("Ocorreu um erro ao salvar os dados.");
+                return false;
+            }
+        }
+
+        async function loadResultsFromJSONBin() {
+            try {
+                const response = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`, {
+                    method: 'GET',
+                    headers: { 'X-Master-Key': apiKey }
+                });
+                if (response.status === 404) return [];
+                if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
+                const data = await response.json();
+                allResults = data.record;
+                displayResults();
+            } catch (error) {
+                console.error("Erro ao carregar do JSONBin:", error);
+                resultsBody.innerHTML = `<tr><td colspan="4" class="text-center text-red-400 py-4">Erro ao carregar resultados.</td></tr>`;
+            }
+        }
+
+        async function saveScore(name, finalScore) {
+            const newScore = { studentName: name, score: parseFloat(finalScore), timestamp: new Date().toISOString() };
+            allResults.push(newScore);
+            const success = await updateJSONBin(allResults);
+            if (success) {
+                displayResults();
+            }
+        }
+
+        function displayResults() {
+            resultsBody.innerHTML = '';
+            if (!allResults || allResults.length === 0) {
+                resultsBody.innerHTML = `<tr><td colspan="${isAdminLoggedIn ? 4 : 3}" class="text-center text-gray-500 py-4">Nenhum resultado ainda.</td></tr>`;
+                return;
+            }
+            const sortedResults = [...allResults].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            sortedResults.forEach(data => {
+                const date = new Date(data.timestamp);
+                const formattedDate = `${date.toLocaleDateString('pt-BR')} ${date.toLocaleTimeString('pt-BR')}`;
+                const row = document.createElement('tr');
+                row.dataset.timestamp = data.timestamp;
+                row.innerHTML = `
+                    <td data-field="studentName">${data.studentName}</td>
+                    <td data-field="score" class="text-amber-300 font-semibold">${parseFloat(data.score).toFixed(1)}</td>
+                    <td>${formattedDate}</td>
+                    ${isAdminLoggedIn ? `
+                    <td class="flex gap-2">
+                        <button class="edit-btn bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded text-xs">Editar</button>
+                        <button class="delete-btn bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded text-xs">Excluir</button>
+                    </td>` : ''}
+                `;
+                resultsBody.appendChild(row);
+            });
+        }
+
+        function handleAdminLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            if (user === 'professor' && pass === 'j1junior') {
+                isAdminLoggedIn = true;
+                loginModal.classList.add('hidden');
+                document.getElementById('admin-controls').classList.remove('hidden');
+                document.getElementById('admin-header').classList.remove('hidden');
+                document.getElementById('show-login-btn').classList.add('hidden');
+                displayResults();
+            } else {
+                document.getElementById('login-error').textContent = 'Usuário ou senha inválidos.';
+            }
+        }
+
+        function handleAdminLogout() {
+            isAdminLoggedIn = false;
+            document.getElementById('admin-controls').classList.add('hidden');
+            document.getElementById('admin-header').classList.add('hidden');
+            document.getElementById('show-login-btn').classList.remove('hidden');
+            displayResults();
+        }
+
+        function handleEdit(row) {
+            row.querySelectorAll('[data-field]').forEach(cell => {
+                const field = cell.dataset.field;
+                const value = cell.textContent;
+                cell.innerHTML = `<input type="text" class="admin-input" value="${value}" data-original-value="${value}">`;
+            });
+            row.querySelector('.edit-btn').textContent = 'Salvar';
+            row.querySelector('.edit-btn').classList.replace('bg-blue-500', 'bg-green-500');
+            row.querySelector('.edit-btn').classList.replace('hover:bg-blue-600', 'hover:bg-green-600');
+            row.querySelector('.delete-btn').textContent = 'Cancelar';
+            row.querySelector('.delete-btn').classList.replace('bg-red-500', 'bg-gray-500');
+            row.querySelector('.delete-btn').classList.replace('hover:bg-red-600', 'hover:bg-gray-600');
+        }
+
+        async function handleSave(row) {
+            const timestamp = row.dataset.timestamp;
+            const index = allResults.findIndex(r => r.timestamp === timestamp);
+            if (index === -1) return;
+            const newName = row.querySelector('[data-field="studentName"] input').value;
+            const newScore = row.querySelector('[data-field="score"] input').value;
+            allResults[index].studentName = newName;
+            allResults[index].score = parseFloat(newScore);
+            const success = await updateJSONBin(allResults);
+            if(success) displayResults();
+        }
+        
+        function handleCancelEdit(row) {
+            displayResults();
+        }
+
+        async function handleDelete(row) {
+            if (!confirm('Tem certeza que deseja excluir este resultado?')) return;
+            const timestamp = row.dataset.timestamp;
+            allResults = allResults.filter(r => r.timestamp !== timestamp);
+            const success = await updateJSONBin(allResults);
+            if(success) displayResults();
+        }
+
+        async function handleAddManual() {
+            const name = prompt("Nome do Aluno:");
+            if (!name) return;
+            const scoreStr = prompt("Nota do Aluno (ex: 1.8):");
+            if (!scoreStr) return;
+            const score = parseFloat(scoreStr);
+            if (isNaN(score)) {
+                alert("Nota inválida.");
+                return;
+            }
+            const newScore = { studentName: name, score: score, timestamp: new Date().toISOString() };
+            allResults.push(newScore);
+            const success = await updateJSONBin(allResults);
+            if(success) displayResults();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderStep();
+            loadResultsFromJSONBin();
+
+            gameContainer.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'BUTTON') return;
+                const nextStepId = e.target.dataset.next;
+                if (!nextStepId) return;
+                if (currentStepId === 'start') {
+                    const nameInput = document.getElementById('student-name');
+                    const name = nameInput.value.trim();
+                    if (!name) {
+                        let msg = document.getElementById('name-error-msg');
+                        if (!msg) {
+                            msg = document.createElement('p');
+                            msg.id = 'name-error-msg';
+                            msg.className = 'text-red-400 text-center mt-2 fade-in';
+                            nameInput.insertAdjacentElement('afterend', msg);
+                        }
+                        msg.textContent = 'Por favor, digite seu nome para começar!';
+                        setTimeout(() => msg.remove(), 3000);
+                        return;
+                    }
+                    studentName = name;
+                    score = 0;
+                }
+                const points = parseFloat(e.target.dataset.points || 0);
+                score += points;
+                if (nextStepId === 'fail_generic') previousStepId = currentStepId;
+                currentStepId = nextStepId;
+                renderStep();
+            });
+
+            document.getElementById('show-login-btn').addEventListener('click', () => loginModal.classList.remove('hidden'));
+            document.getElementById('cancel-login-btn').addEventListener('click', () => loginModal.classList.add('hidden'));
+            document.getElementById('login-btn').addEventListener('click', handleAdminLogin);
+            document.getElementById('logout-btn').addEventListener('click', handleAdminLogout);
+            document.getElementById('add-manual-btn').addEventListener('click', handleAddManual);
+
+            resultsBody.addEventListener('click', function(e) {
+                const row = e.target.closest('tr');
+                if (!row) return;
+                if (e.target.classList.contains('edit-btn')) {
+                    if (e.target.textContent === 'Editar') handleEdit(row);
+                    else handleSave(row);
+                } else if (e.target.classList.contains('delete-btn')) {
+                     if (e.target.textContent === 'Excluir') handleDelete(row);
+                     else handleCancelEdit(row);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
